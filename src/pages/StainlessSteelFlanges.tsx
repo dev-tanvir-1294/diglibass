@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   flangeGrades,
   flangeSpecifications,
@@ -10,6 +11,11 @@ import {
   enquiryContacts,
   FlangeGrade,
 } from '../data/flanges';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const gradeColors: Record<string, string> = {
   '304': 'from-blue-500/20 to-blue-600/20 border-blue-500/30',
@@ -34,9 +40,14 @@ export default function StainlessSteelFlanges() {
         gsap.from(el, {
           opacity: 0,
           y: 30,
-          duration: 0.6,
-          delay: index * 0.05,
+          duration: 0.8,
+          delay: index * 0.03,
           ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'bottom 85%',
+            toggleActions: 'play none none none',
+          },
         });
       });
     }, container);
