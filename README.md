@@ -6,9 +6,10 @@ A React + Tailwind CSS + GSAP product category page for a B2B stainless steel ex
 
 - **Stainless Steel Flanges** product category page with enquiry-first layout
 - **Enquiry form** with client-side validation (name, email, phone, product interest)
-- **Mock API server** for storing lead submissions (Node.js, no external dependencies)
+- **Mock API** (inline Vite middleware in dev, standalone server for production) — stores leads in `api/submissions.json`
 - **GSAP + Lenis** — smooth scroll-triggered animations
 - **Google Tag Manager** container + **GA4** event tracking on form submission
+- **SVG images** — hero flange illustration, certification badges, flange type icons
 - **Netlify-ready** — production build configured for one-click deploy
 
 ## Getting Started
@@ -17,25 +18,33 @@ A React + Tailwind CSS + GSAP product category page for a B2B stainless steel ex
 # Install dependencies (includes devDependencies)
 npm install
 
-# Start both the mock API server and dev server
-npm run server   # Terminal 1 — mock API on http://localhost:4000
-npm run dev      # Terminal 2 — Vite dev server on http://localhost:5173
+# Start dev server (Vite middleware handles API automatically)
+npm run dev
 
 # Build for production
 npm run build
 
 # Preview production build
 npm run preview
+
+# Run mock API server standalone (for production-like testing)
+npm run server
 ```
 
-### Mock API Server
+### Mock API
 
-The mock API server (`api/server.js`) provides:
-- `POST /api/submissions` — accepts form submissions, stores in `api/submissions.json`
-- `GET /api/submissions` — lists all submissions (CSV-style verification)
-- `GET /health` — health check
+The form submits to `/api/submissions` which is handled by:
 
-Submissions are logged to the server console with a unique ID for verification.
+- **Development**: Vite middleware plugin (`vite.api-plugin.ts`) — no separate server needed
+- **Production**: Standalone server (`api/server.js` via `npm run server`)
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/health` | GET | Health check |
+| `/api/submissions` | GET | List all stored submissions |
+| `/api/submissions` | POST | Create a new submission (stores in `api/submissions.json`) |
+
+Submissions are logged to the console with a unique ID for verification.
 
 ### Google Tag Manager Setup
 
