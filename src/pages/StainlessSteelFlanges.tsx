@@ -42,9 +42,10 @@ const certTextColors: Record<string, string> = {
 function GradeIcon({ grade }: { grade: string }) {
   const bg = gradeColorMap[grade] || '#64748B';
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
+      <title>AISI {grade} stainless steel grade</title>
       <circle cx="24" cy="24" r="20" fill={bg} />
-      <text x="24" y="31" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="white">
+      <text x="24" y="31" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="14" fontWeight="700" fill="white">
         {grade}
       </text>
     </svg>
@@ -55,13 +56,14 @@ function CertificationBadge({ name }: { name: string }) {
   const bg = certBgColors[name] || '#F1F5F9';
   const text = certTextColors[name] || '#475569';
   return (
-    <svg width="80" height="48" viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg">
-      <rect width="80" height="48" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <svg width="80" height="48" viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
+      <title>{name} certification badge</title>
+      <rect width="80" height="48" rx="8" fill="#F8FAFC" stroke="#E2E8F0" strokeWidth="1" />
       <rect x="6" y="6" width="68" height="36" rx="4" fill={bg} />
-      <text x="40" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill={text} letter-spacing="0.3">
+      <text x="40" y="22" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="8" fontWeight="700" fill={text} letterSpacing="0.3">
         {name}
       </text>
-      <text x="40" y="34" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill={text}>
+      <text x="40" y="34" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="7" fill={text}>
         Certified
       </text>
     </svg>
@@ -112,7 +114,8 @@ function FlangeTypeIcon({ code }: { code: string }) {
     ),
   };
   return (
-    <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
+      <title>Flange type {code}</title>
       {icons[code] || icons.WN}
     </svg>
   );
@@ -147,12 +150,13 @@ export default function StainlessSteelFlanges() {
 
             {/* Enquiry-First Contact Bar */}
             <div className="flex items-center space-x-4">
-              <div className="hidden sm:flex items-center space-x-1 text-xs text-slate-300">
+              <div className="hidden sm:flex items-center space-x-1 text-xs text-slate-200">
                 <span>📞</span>
                 <span>+971 4 123 4567</span>
               </div>
               <button
                 onClick={scrollToEnquiry}
+                type="button"
                 className="bg-teal-500 hover:bg-teal-400 text-slate-900 font-semibold px-4 py-2 rounded text-sm transition-colors"
               >
                 Request a Quote
@@ -167,13 +171,13 @@ export default function StainlessSteelFlanges() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
-              <span className="inline-block bg-teal-500/20 text-teal-300 px-3 py-1 rounded-full text-xs font-medium mb-4">
+              <span className="inline-block bg-teal-500/20 text-teal-700 px-3 py-1 rounded-full text-xs font-medium mb-4">
                 B2B Export • Middle East
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
                 Stainless Steel Flanges
               </h1>
-              <p className="text-lg text-slate-300 mb-6 max-w-lg">
+              <p className="text-lg text-slate-200 mb-6 max-w-lg">
                 Premium ASME/EN-compliant stainless steel flanges for oil & gas,
                 petrochemical, desalination, and industrial projects across Saudi
                 Arabia, UAE, and the wider Middle East.
@@ -181,12 +185,14 @@ export default function StainlessSteelFlanges() {
               <div className="flex flex-wrap gap-3">
                 <button
                   onClick={scrollToEnquiry}
+                  type="button"
                   className="bg-teal-500 hover:bg-teal-400 text-slate-900 font-semibold py-2.5 px-6 rounded transition-colors"
                 >
                   Get a Free Quote
                 </button>
                 <a
                   href="tel:+97141234567"
+                  aria-label="Call +971 4 123 4567"
                   className="border border-slate-600 hover:border-teal-500 text-slate-200 font-medium py-2.5 px-6 rounded transition-colors flex items-center gap-2"
                 >
                   <span>📞</span> Call Now: +971 4 123 4567
@@ -197,16 +203,17 @@ export default function StainlessSteelFlanges() {
             {/* Hero Product Image (inline SVG) */}
             <div className="bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-slate-600 rounded-xl overflow-hidden">
               <div className="aspect-[4/3] relative p-4 flex items-center justify-center">
-                <svg viewBox="0 0 800 600" width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 800 600" width="400" height="300" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-label="Stainless steel flange illustration">
+                  <title>Stainless Steel Flange</title>
                   <defs>
                     <linearGradient id="steelGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#E2E8F0" />
-                      <stop offset="50%" stop-color="#CBD5E1" />
-                      <stop offset="100%" stop-color="#94A3B8" />
+                      <stop offset="0%" stopColor="#E2E8F0" />
+                      <stop offset="50%" stopColor="#CBD5E1" />
+                      <stop offset="100%" stopColor="#94A3B8" />
                     </linearGradient>
                     <linearGradient id="metalGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#F1F5F9" />
-                      <stop offset="100%" stop-color="#E2E8F0" />
+                      <stop offset="0%" stopColor="#F1F5F9" />
+                      <stop offset="100%" stopColor="#E2E8F0" />
                     </linearGradient>
                   </defs>
                   <rect width="800" height="600" fill="url(#steelGrad2)" rx="12" />
@@ -215,7 +222,7 @@ export default function StainlessSteelFlanges() {
                   <circle cx="400" cy="270" r="36" fill="#F8FAFC" />
                   <circle cx="400" cy="270" r="85" fill="none" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4,4" />
                   <rect x="370" y="400" width="60" height="40" fill="url(#metalGrad2)" stroke="#94A3B8" strokeWidth="1" />
-                  <text x="400" y="428" text-anchor="middle" fontFamily="system-ui" fontSize="10" fill="#64748B">Flange</text>
+                  <text x="400" y="428" textAnchor="middle" fontFamily="system-ui" fontSize="10" fill="#64748B">Flange</text>
                 </svg>
               </div>
             </div>
@@ -227,9 +234,9 @@ export default function StainlessSteelFlanges() {
       <div className="md:hidden bg-teal-500 text-slate-900">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-center gap-4 text-sm">
-            <a href="tel:+97141234567" className="font-semibold">📞 +971 4 123 4567</a>
-            <a href="https://wa.me/971501234567" className="font-semibold">💬 WhatsApp</a>
-            <a href="mailto:sales@steelexportpro.com" className="font-semibold">📧 Email Us</a>
+            <a href="tel:+97141234567" aria-label="Call +971 4 123 4567">📞 +971 4 123 4567</a>
+            <a href="https://wa.me/971501234567" aria-label="WhatsApp chat">💬 WhatsApp</a>
+            <a href="mailto:sales@steelexportpro.com" aria-label="Email sales">📧 Email Us</a>
           </div>
         </div>
       </div>
@@ -256,7 +263,7 @@ export default function StainlessSteelFlanges() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-1">{ft.name}</h3>
-                  <p className="text-sm text-slate-500">{ft.description}</p>
+                  <p className="text-sm text-slate-600">{ft.description}</p>
                 </div>
               </div>
             ))}
@@ -286,16 +293,18 @@ export default function StainlessSteelFlanges() {
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">Technical Specifications</h2>
 
           <div className="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
-            <table className="w-full text-sm">
-              <thead className="bg-slate-100">
-                <tr>
-                  <th className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Standard</th>
-                  <th className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Size Range</th>
-                  <th className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Pressure Rating</th>
-                  <th className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Thickness</th>
-                  <th className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Material Grades</th>
-                </tr>
-              </thead>
+            <div className="max-w-full overflow-x-auto">
+              <table className="w-full text-sm min-w-[600px]">
+                <caption className="sr-only">Flange technical specifications by standard</caption>
+                <thead className="bg-slate-100">
+                  <tr>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Standard</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Size Range</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Pressure Rating</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Thickness</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Material Grades</th>
+                  </tr>
+                </thead>
               <tbody className="divide-y divide-slate-200">
                 {flangeSpecifications.map((spec, idx) => (
                   <tr key={idx}>
@@ -311,16 +320,17 @@ export default function StainlessSteelFlanges() {
           </div>
 
           <div className="mt-8 bg-white rounded-lg p-6 shadow-md border border-slate-200">
-            <h3 className="font-semibold text-slate-900 mb-3">Chemical Composition</h3>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-slate-200">
-                  <th className="text-left py-2">Element</th>
-                  <th className="text-left py-2">304</th>
-                  <th className="text-left py-2">316</th>
-                  <th className="text-left py-2">316L</th>
-                </tr>
-              </thead>
+          <h3 className="font-semibold text-slate-900 mb-3">Chemical Composition</h3>
+          <table className="w-full text-sm min-w-[400px]">
+            <caption className="sr-only">Chemical composition of flange grades 304, 316, and 316L</caption>
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th scope="col" className="text-left py-2">Element</th>
+                <th scope="col" className="text-left py-2">304</th>
+                <th scope="col" className="text-left py-2">316</th>
+                <th scope="col" className="text-left py-2">316L</th>
+              </tr>
+            </thead>
               <tbody>
                 <tr>
                   <td className="py-2">Chromium (Cr)</td>
@@ -350,7 +360,8 @@ export default function StainlessSteelFlanges() {
             </table>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* ===== Certifications ===== */}
       <section id="certs" className="py-12 sm:py-16 bg-slate-100">
@@ -397,15 +408,15 @@ export default function StainlessSteelFlanges() {
                 <table className="w-full text-sm">
                   <tbody>
                     <tr>
-                      <td className="font-medium text-slate-700 py-1 pr-2">Ports</td>
+                      <td scope="row" className="font-medium text-slate-700 py-1 pr-2">Ports</td>
                       <td className="text-slate-600">{info.ports.join(', ')}</td>
                     </tr>
                     <tr>
-                      <td className="font-medium text-slate-700 py-1 pr-2">Lead Time</td>
+                      <td scope="row" className="font-medium text-slate-700 py-1 pr-2">Lead Time</td>
                       <td className="text-slate-600">{info.leadTime}</td>
                     </tr>
                     <tr>
-                      <td className="font-medium text-slate-700 py-1 pr-2">Packaging</td>
+                      <td scope="row" className="font-medium text-slate-700 py-1 pr-2">Packaging</td>
                       <td className="text-slate-600">{info.packaging}</td>
                     </tr>
                   </tbody>
@@ -531,15 +542,15 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
           Grade {grade.grade}
         </span>
       </div>
-      <h3 className="text-xl font-bold text-white mb-2">AISI {grade.grade}</h3>
-      <p className="text-slate-300 text-sm mb-4">{grade.description}</p>
+      <h3 className="text-xl font-bold text-slate-900 mb-2">AISI {grade.grade}</h3>
+      <p className="text-slate-600 text-sm mb-4">{grade.description}</p>
 
       <div className="mb-3">
-        <h4 className="text-xs font-semibold text-slate-400 uppercase mb-1">Key Properties</h4>
-        <ul className="text-sm text-slate-300 space-y-0.5">
+        <h4 className="text-xs font-semibold text-slate-500 uppercase mb-1">Key Properties</h4>
+        <ul className="text-sm text-slate-600 space-y-0.5">
           {grade.properties.map((prop) => (
             <li key={prop} className="flex items-center">
-              <span className="w-1 h-1 bg-teal-400 rounded-full mr-2"></span>
+              <span className="w-1 h-1 bg-teal-500 rounded-full mr-2"></span>
               {prop}
             </li>
           ))}
@@ -547,11 +558,11 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
       </div>
 
       <div>
-        <h4 className="text-xs font-semibold text-slate-400 uppercase mb-1">Applications</h4>
-        <ul className="text-sm text-slate-300 space-y-0.5">
+        <h4 className="text-xs font-semibold text-slate-500 uppercase mb-1">Applications</h4>
+        <ul className="text-sm text-slate-600 space-y-0.5">
           {grade.applications.map((app) => (
             <li key={app} className="flex items-center">
-              <span className="w-1 h-1 bg-teal-400 rounded-full mr-2"></span>
+              <span className="w-1 h-1 bg-teal-500 rounded-full mr-2"></span>
               {app}
             </li>
           ))}

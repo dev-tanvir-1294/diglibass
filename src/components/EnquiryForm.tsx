@@ -159,10 +159,11 @@ export default function EnquiryForm() {
           Your enquiry has been received. A sales representative will contact you within 2 hours.
         </p>
         {submissionId && (
-          <p className="text-sm text-slate-400 mb-4">Reference: {submissionId}</p>
+          <p className="text-sm text-slate-300 mb-4">Reference: {submissionId}</p>
         )}
         <button
           onClick={handleReset}
+          type="button"
           className="bg-teal-500 hover:bg-teal-400 text-slate-900 font-semibold py-2 px-6 rounded-lg transition-colors"
         >
           Submit Another Enquiry
@@ -187,9 +188,11 @@ export default function EnquiryForm() {
           className={`w-full px-4 py-2.5 rounded bg-slate-800 border text-white placeholder-slate-400 focus:outline-none transition-colors ${
             errors.name ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-teal-500'
           }`}
+          aria-invalid={errors.name ? 'true' : 'false'}
+          aria-describedby={errors.name ? 'name-error' : undefined}
           placeholder="John Smith"
         />
-        {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
+        {errors.name && <p className="mt-1 text-xs text-red-400" id="name-error" aria-live="polite">{errors.name}</p>}
       </div>
 
       {/* Email */}
@@ -203,12 +206,14 @@ export default function EnquiryForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
+          aria-invalid={errors.email ? 'true' : 'false'}
+          aria-describedby={errors.email ? 'email-error' : undefined}
           className={`w-full px-4 py-2.5 rounded bg-slate-800 border text-white placeholder-slate-400 focus:outline-none transition-colors ${
             errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-teal-500'
           }`}
           placeholder="john@company.com"
         />
-        {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+        {errors.email && <p className="mt-1 text-xs text-red-400" id="email-error" aria-live="polite">{errors.email}</p>}
       </div>
 
       {/* Phone */}
@@ -222,12 +227,14 @@ export default function EnquiryForm() {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
+          aria-invalid={errors.phone ? 'true' : 'false'}
+          aria-describedby={errors.phone ? 'phone-error' : undefined}
           className={`w-full px-4 py-2.5 rounded bg-slate-800 border text-white placeholder-slate-400 focus:outline-none transition-colors ${
             errors.phone ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-teal-500'
           }`}
           placeholder="+971 50 123 4567"
         />
-        {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone}</p>}
+        {errors.phone && <p className="mt-1 text-xs text-red-400" id="phone-error" aria-live="polite">{errors.phone}</p>}
       </div>
 
       {/* Company */}
@@ -241,12 +248,14 @@ export default function EnquiryForm() {
           name="company"
           value={formData.company}
           onChange={handleChange}
+          aria-invalid={errors.company ? 'true' : 'false'}
+          aria-describedby={errors.company ? 'company-error' : undefined}
           className={`w-full px-4 py-2.5 rounded bg-slate-800 border text-white placeholder-slate-400 focus:outline-none transition-colors ${
             errors.company ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-teal-500'
           }`}
           placeholder="Your company name"
         />
-        {errors.company && <p className="mt-1 text-xs text-red-400">{errors.company}</p>}
+        {errors.company && <p className="mt-1 text-xs text-red-400" id="company-error" aria-live="polite">{errors.company}</p>}
       </div>
 
       {/* Product Interest */}
@@ -259,6 +268,8 @@ export default function EnquiryForm() {
           name="productInterest"
           value={formData.productInterest}
           onChange={handleChange}
+          aria-invalid={errors.productInterest ? 'true' : 'false'}
+          aria-describedby={errors.productInterest ? 'product-interest-error' : undefined}
           className={`w-full px-4 py-2.5 rounded bg-slate-800 border text-white placeholder-slate-400 focus:outline-none transition-colors ${
             errors.productInterest ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-teal-500'
           }`}
@@ -269,7 +280,7 @@ export default function EnquiryForm() {
             </option>
           ))}
         </select>
-        {errors.productInterest && <p className="mt-1 text-xs text-red-400">{errors.productInterest}</p>}
+        {errors.productInterest && <p className="mt-1 text-xs text-red-400" id="product-interest-error" aria-live="polite">{errors.productInterest}</p>}
       </div>
 
       {/* Message */}
@@ -282,13 +293,15 @@ export default function EnquiryForm() {
           name="message"
           value={formData.message}
           onChange={handleChange}
+          aria-invalid={errors.message ? 'true' : 'false'}
+          aria-describedby={errors.message ? 'message-error' : undefined}
           rows={3}
           className={`w-full px-4 py-2.5 rounded bg-slate-800 border text-white placeholder-slate-400 focus:outline-none transition-colors resize-y ${
             errors.message ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-teal-500'
           }`}
           placeholder="Enter your requirements, quantities, or questions..."
         />
-        {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
+        {errors.message && <p className="mt-1 text-xs text-red-400" id="message-error" aria-live="polite">{errors.message}</p>}
       </div>
 
       {/* Submit */}
@@ -300,7 +313,7 @@ export default function EnquiryForm() {
         >
           {isSubmitting ? (
             <>
-              <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+              <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" role="status">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path
                   className="opacity-75"
@@ -308,7 +321,7 @@ export default function EnquiryForm() {
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                 />
               </svg>
-              Submitting...
+              <span>Submitting...</span>
             </>
           ) : (
             'Send Enquiry'
