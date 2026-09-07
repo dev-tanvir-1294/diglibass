@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Threaded pipe -->
+  <rect x="29" y="10" width="6" height="34" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1" />
+  <!-- Threaded section -->
+  <path d="M32 14l-3 3 3-2 3 2z" fill="#94A3B8" />
+  <path d="M32 18l-3 3 3-2 3 2z" fill="#94A3B8" />
+  <path d="M32 22l-3 3 3-2 3 2z" fill="#94A3B8" />
+  <!-- Flange -->
+  <rect x="22" y="42" width="20" height="10" fill="#94A3B8" />
+  <circle cx="32" cy="47" r="3" fill="#CBD5E1" />
+  <text x="32" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="#64748B">THD</text>
+</svg>

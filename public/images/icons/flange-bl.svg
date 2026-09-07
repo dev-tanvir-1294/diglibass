@@ -1,0 +1,6 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blind flange (solid disc) -->
+  <circle cx="32" cy="32" r="18" fill="#94A3B8" />
+  <circle cx="32" cy="32" r="4" fill="#CBD5E1" stroke="#94A3B8" />
+  <text x="32" y="56" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="#64748B">BL</text>
+</svg>

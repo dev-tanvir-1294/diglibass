@@ -2,13 +2,13 @@ import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import EnquiryForm from '../components/EnquiryForm';
 import {
   flangeGrades,
   flangeSpecifications,
   flangeTypes,
   certifications,
   exportInfo,
-  enquiryContacts,
   FlangeGrade,
 } from '../data/flanges';
 
@@ -27,6 +27,30 @@ const gradeBadgeColors: Record<string, string> = {
   '304': 'bg-blue-500',
   '316': 'bg-teal-500',
   '316L': 'bg-cyan-500',
+};
+
+const certIcons: Record<string, string> = {
+  'ASTM A182': '/images/certs/astm.svg',
+  'ASME B16.5': '/images/certs/asme.svg',
+  'ISO 9001:2015': '/images/certs/iso.svg',
+  'EN 1092-1': '/images/certs/en.svg',
+  'API 5A': '/images/certs/api.svg',
+  'CE Marking': '/images/certs/ce.svg',
+};
+
+const flangeIconMap: Record<string, string> = {
+  'Weld Neck (WN)': '/images/icons/flange-wn.svg',
+  'Slip-On (SO)': '/images/icons/flange-so.svg',
+  'Blind (BL)': '/images/icons/flange-bl.svg',
+  'Socket Weld (SW)': '/images/icons/flange-sw.svg',
+  'Lap Joint (LJ)': '/images/icons/flange-lj.svg',
+  ' Threaded (THD)': '/images/icons/flange-thd.svg',
+};
+
+const gradeIconMap: Record<string, string> = {
+  '304': '/images/icons/grade-304.svg',
+  '316': '/images/icons/grade-316.svg',
+  '316L': '/images/icons/grade-316l.svg',
 };
 
 export default function StainlessSteelFlanges() {
@@ -133,16 +157,17 @@ export default function StainlessSteelFlanges() {
               </div>
             </div>
 
-            {/* Product Image Placeholder */}
-            <div className="bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-dashed border-slate-600 rounded-xl overflow-hidden">
-              <div className="aspect-[4/3] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-slate-600 rounded-full flex items-center justify-center text-3xl">
-                    🔩
-                  </div>
-                  <p className="text-slate-400">Stainless Steel Flange</p>
-                  <p className="text-sm text-slate-500 mt-2">Product image placeholder</p>
-                </div>
+            {/* Product Image */}
+            <div className="bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-slate-600 rounded-xl overflow-hidden">
+              <div className="aspect-[4/3] relative">
+                <img
+                  src="/images/hero-flange.svg"
+                  alt="Stainless Steel Flange"
+                  className="w-full h-full object-contain p-4"
+                  loading="eager"
+                  width="800"
+                  height="600"
+                />
               </div>
             </div>
           </div>
@@ -175,10 +200,20 @@ export default function StainlessSteelFlanges() {
             {flangeTypes.map((ft) => (
               <div
                 key={ft.code}
-                className="bg-white rounded-lg p-6 shadow-md border border-slate-200"
+                className="bg-white rounded-lg p-6 shadow-md border border-slate-200 flex items-start gap-4 fade-in"
               >
-                <h3 className="font-semibold text-slate-900 mb-1">{ft.name}</h3>
-                <p className="text-sm text-slate-500">{ft.description}</p>
+                <img
+                  src={flangeIconMap[ft.name] || '/images/icons/flange-wn.svg'}
+                  alt={ft.name}
+                  className="w-12 h-12 object-contain flex-shrink-0"
+                  loading="lazy"
+                  width="48"
+                  height="48"
+                />
+                <div>
+                  <h3 className="font-semibold text-slate-900 mb-1">{ft.name}</h3>
+                  <p className="text-sm text-slate-500">{ft.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -285,9 +320,16 @@ export default function StainlessSteelFlanges() {
             {certifications.map((cert) => (
               <div
                 key={cert.name}
-                className="bg-white rounded-lg p-6 shadow-md border border-slate-200 flex items-start gap-4"
+                className="bg-white rounded-lg p-6 shadow-md border border-slate-200 flex items-center gap-4 fade-in"
               >
-                <span className="text-3xl">{cert.icon}</span>
+                <img
+                  src={certIcons[cert.name] || `/images/certs/default.svg`}
+                  alt={cert.name}
+                  className="h-12 w-20 object-contain flex-shrink-0"
+                  loading="lazy"
+                  width="80"
+                  height="48"
+                />
                 <div>
                   <h3 className="font-bold text-slate-900">{cert.name}</h3>
                   <p className="text-sm text-slate-600 mt-1">{cert.description}</p>
@@ -374,53 +416,7 @@ export default function StainlessSteelFlanges() {
 
           {/* Enquiry Form */}
           <div className="max-w-2xl mx-auto">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert('Thank you for your enquiry. We will contact you soon.');
-              }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-            >
-              <input
-                type="text"
-                placeholder="Your Name *"
-                required
-                className="px-4 py-2.5 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-teal-500"
-              />
-              <input
-                type="email"
-                placeholder="Your Email *"
-                required
-                className="px-4 py-2.5 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-teal-500"
-              />
-              <input
-                type="tel"
-                placeholder="Your Phone *"
-                required
-                className="px-4 py-2.5 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 sm:col-span-2"
-              />
-              <select
-                required
-                className="px-4 py-2.5 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 sm:col-span-2"
-              >
-                <option value="" className="bg-slate-800">Select Grade *</option>
-                <option value="304" className="bg-slate-800">304 Stainless Steel</option>
-                <option value="316" className="bg-slate-800">316 Stainless Steel</option>
-                <option value="316L" className="bg-slate-800">316L Stainless Steel</option>
-                <option value="other" className="bg-slate-800">Other / Custom</option>
-              </select>
-              <textarea
-                placeholder="Message / Specifications (optional)"
-                rows={3}
-                className="px-4 py-2.5 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 sm:col-span-2"
-              />
-              <button
-                type="submit"
-                className="sm:col-span-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold py-3 px-6 rounded-lg transition-colors"
-              >
-                Send Enquiry
-              </button>
-            </form>
+            <EnquiryForm />
           </div>
         </div>
       </section>
@@ -485,11 +481,21 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
 
   return (
     <div
-      className={`bg-gradient-to-br ${colorClass} border rounded-xl p-6 transition-transform hover:scale-[1.02]`}
+      className={`bg-gradient-to-br ${colorClass} border rounded-xl p-6 transition-transform hover:scale-[1.02] fade-in`}
     >
-      <span className={`inline-block ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded mb-3`}>
-        Grade {grade.grade}
-      </span>
+      <div className="flex items-center gap-3 mb-3">
+        <img
+          src={gradeIconMap[grade.grade] || '/images/icons/grade-304.svg'}
+          alt={`Grade ${grade.grade}`}
+          className="w-10 h-10 object-contain"
+          loading="lazy"
+          width="40"
+          height="40"
+        />
+        <span className={`inline-block ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded`}>
+          Grade {grade.grade}
+        </span>
+      </div>
       <h3 className="text-xl font-bold text-white mb-2">AISI {grade.grade}</h3>
       <p className="text-slate-300 text-sm mb-4">{grade.description}</p>
 

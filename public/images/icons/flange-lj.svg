@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stub end -->
+  <rect x="29" y="8" width="6" height="30" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1" />
+  <!-- Lap joint flange (rotating) -->
+  <path d="M20 36 Q32 36 44 36 L44 44 Q32 44 20 44 Z" fill="#94A3B8" />
+  <circle cx="32" cy="40" r="4" fill="#CBD5E1" stroke="#94A3B8" />
+  <text x="32" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="#64748B">LJ</text>
+</svg>
