@@ -57,7 +57,7 @@ export default function StainlessSteelFlanges() {
   const container = useRef<HTMLDivElement>(null);
   const enquiryRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
+   useGSAP(() => {
     const ctx = gsap.context(() => {
       const items = container.current?.querySelectorAll('.fade-in');
       items?.forEach((el, index) => {
@@ -67,9 +67,10 @@ export default function StainlessSteelFlanges() {
           duration: 0.8,
           delay: index * 0.03,
           ease: 'power2.out',
+          immediateRender: false,
           scrollTrigger: {
             trigger: el,
-            start: 'bottom 85%',
+            start: 'top 90%',
             toggleActions: 'play none none none',
           },
         });
@@ -126,7 +127,7 @@ export default function StainlessSteelFlanges() {
       </header>
 
       {/* ===== Hero Section ===== */}
-      <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-12 sm:py-20 fade-in">
+      <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
@@ -175,7 +176,7 @@ export default function StainlessSteelFlanges() {
       </section>
 
       {/* ===== Enquiry-First Contact Bar (Mobile) ===== */}
-      <div className="md:hidden bg-teal-500 text-slate-900 fade-in">
+      <div className="md:hidden bg-teal-500 text-slate-900">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-center gap-4 text-sm">
             <a href="tel:+97141234567" className="font-semibold">📞 +971 4 123 4567</a>

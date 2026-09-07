@@ -33,8 +33,13 @@ export default function LenisScroll({ children }: LenisScrollProps) {
       lenis.raf(time * 1000);
     });
 
-    // Disable GSAP's auto-repricing
     gsap.ticker.lagSmoothing(0);
+
+    // CRITICAL: Refresh ScrollTrigger after Lenis is initialized
+    // so all trigger positions are calculated correctly
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
 
     lenisRef.current = lenis;
 
