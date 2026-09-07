@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { useGSAP } from 'gsap/all';
+import { useGSAP } from 'gsap/React';
 
 function App() {
   const container = useRef<HTMLDivElement>(null);
