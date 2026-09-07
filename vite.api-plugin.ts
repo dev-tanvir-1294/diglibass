@@ -21,8 +21,8 @@ async function writeSubmissions(submissions: unknown[]) {
 export function mockApiPlugin() {
   return {
     name: 'vite:mock-api',
-    configureServer(server: { use: (path: string, handler: Connect.HandleFunction) => void }) {
-      server.use('/api', (req, res) => {
+    configureServer(server: { middlewares: Connect.Server }) {
+      server.middlewares.use('/api', (req, res) => {
         const method = req.method;
         const url = new URL(req.url || '', 'http://localhost').pathname;
 
@@ -37,13 +37,13 @@ export function mockApiPlugin() {
           return;
         }
 
-        if (url === '/api/health' && method === 'GET') {
+        if (url === '/health' && method === 'GET') {
           res.statusCode = 200;
           res.end(JSON.stringify({ status: 'ok' }));
           return;
         }
 
-        if (url === '/api/submissions' && method === 'GET') {
+        if (url === '/submissions' && method === 'GET') {
           readSubmissions().then((submissions) => {
             res.statusCode = 200;
             res.end(JSON.stringify({ success: true, count: submissions.length, submissions }));
@@ -51,7 +51,7 @@ export function mockApiPlugin() {
           return;
         }
 
-        if (url === '/api/submissions' && method === 'POST') {
+        if (url === '/submissions' && method === 'POST') {
           const chunks: Buffer[] = [];
           req.on('data', (chunk: Buffer) => chunks.push(chunk));
           req.on('end', async () => {
