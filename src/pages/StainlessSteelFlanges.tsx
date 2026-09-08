@@ -310,45 +310,47 @@ export default function StainlessSteelFlanges() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">Technical Specifications</h2>
 
-          <div className="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
-            <div className="max-w-full overflow-x-auto">
+          <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mb-8">
+            <div className="overflow-x-auto">
               <table className="w-full text-sm min-w-[600px]">
                 <caption className="sr-only">Flange technical specifications by standard</caption>
                 <thead className="bg-slate-100">
                   <tr>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Standard</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Standard</th>
                     <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Size Range</th>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Pressure Rating</th>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Thickness</th>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Material Grades</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Pressure Rating</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Thickness</th>
+                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Material Grades</th>
                   </tr>
                 </thead>
               <tbody className="divide-y divide-slate-200">
                 {flangeSpecifications.map((spec, idx) => (
                   <tr key={idx}>
-                    <td className="px-4 sm:px-6 py-3 text-slate-800">{spec.standard}</td>
+                    <td className="px-4 sm:px-6 py-3 text-slate-800 whitespace-nowrap">{spec.standard}</td>
                     <td className="px-4 sm:px-6 py-3 text-slate-600">{spec.sizeRange}</td>
-                    <td className="px-4 sm:px-6 py-3 text-slate-600">{spec.pressureRating}</td>
-                    <td className="px-4 sm:px-6 py-3 text-slate-600">{spec.thickness}</td>
+                    <td className="px-4 sm:px-6 py-3 text-slate-600 whitespace-nowrap">{spec.pressureRating}</td>
+                    <td className="px-4 sm:px-6 py-3 text-slate-600 whitespace-nowrap">{spec.thickness}</td>
                     <td className="px-4 sm:px-6 py-3 text-slate-600">{spec.material}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+        </div>
 
-          <div className="mt-8 bg-white rounded-lg p-6 shadow-md border border-slate-200">
+        <div className="bg-white rounded-lg p-6 shadow-md border border-slate-200">
           <h3 className="font-semibold text-slate-900 mb-3">Chemical Composition</h3>
-          <table className="w-full text-sm min-w-[400px]">
-            <caption className="sr-only">Chemical composition of flange grades 304, 316, and 316L</caption>
-            <thead>
-              <tr className="border-b border-slate-200">
-                <th scope="col" className="text-left py-2">Element</th>
-                <th scope="col" className="text-left py-2">304</th>
-                <th scope="col" className="text-left py-2">316</th>
-                <th scope="col" className="text-left py-2">316L</th>
-              </tr>
-            </thead>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[400px]">
+              <caption className="sr-only">Chemical composition of flange grades 304, 316, and 316L</caption>
+              <thead>
+                <tr className="border-b border-slate-200">
+                  <th scope="col" className="text-left py-2">Element</th>
+                  <th scope="col" className="text-left py-2">304</th>
+                  <th scope="col" className="text-left py-2">316</th>
+                  <th scope="col" className="text-left py-2">316L</th>
+                </tr>
+              </thead>
               <tbody>
                 <tr>
                   <td className="py-2">Chromium (Cr)</td>
@@ -564,11 +566,11 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
         </span>
       </div>
       <h3 className={`text-xl font-bold ${headingColor} mb-2`}>AISI {grade.grade}</h3>
-      <p className="text-slate-600 text-sm mb-4">{grade.description}</p>
+      <p className={`text-sm mb-4 ${mutedColor}`}>{grade.description}</p>
 
       <div className="mb-3">
         <h4 className={`text-xs font-semibold ${mutedColor} uppercase mb-1`}>Key Properties</h4>
-        <ul className="text-sm text-slate-600 space-y-0.5">
+        <ul className={`text-sm ${mutedColor} space-y-0.5`}>
           {grade.properties.map((prop) => (
             <li key={prop} className="flex items-center">
               <span className={`w-1 h-1 ${bulletColor} rounded-full mr-2`}></span>
@@ -580,7 +582,7 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
 
       <div>
         <h4 className={`text-xs font-semibold ${mutedColor} uppercase mb-1`}>Applications</h4>
-        <ul className="text-sm text-slate-600 space-y-0.5">
+        <ul className={`text-sm ${mutedColor} space-y-0.5`}>
           {grade.applications.map((app) => (
             <li key={app} className="flex items-center">
               <span className={`w-1 h-1 ${bulletColor} rounded-full mr-2`}></span>
