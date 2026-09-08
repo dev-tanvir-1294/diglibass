@@ -15,6 +15,24 @@ const gradeBadgeColors: Record<string, string> = {
   '316L': 'bg-cyan-500',
 };
 
+const gradeTextColors: Record<string, string> = {
+  '304': 'text-blue-700',
+  '316': 'text-teal-700',
+  '316L': 'text-cyan-700',
+};
+
+const gradeMutedColors: Record<string, string> = {
+  '304': 'text-blue-600',
+  '316': 'text-teal-600',
+  '316L': 'text-cyan-600',
+};
+
+const gradeBulletColors: Record<string, string> = {
+  '304': 'bg-blue-500',
+  '316': 'bg-teal-500',
+  '316L': 'bg-cyan-500',
+};
+
 const gradeColorMap: Record<string, string> = {
   '304': '#3B82F8',
   '316': '#0D9488',
@@ -523,6 +541,9 @@ export default function StainlessSteelFlanges() {
 
 function GradeCard({ grade }: { grade: FlangeGrade }) {
   const badgeColor = gradeBadgeColors[grade.grade] || 'bg-slate-500';
+  const headingColor = gradeTextColors[grade.grade] || 'text-slate-900';
+  const mutedColor = gradeMutedColors[grade.grade] || 'text-slate-500';
+  const bulletColor = gradeBulletColors[grade.grade] || 'bg-teal-500';
 
   return (
     <div
@@ -542,15 +563,15 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
           Grade {grade.grade}
         </span>
       </div>
-      <h3 className="text-xl font-bold text-slate-900 mb-2">AISI {grade.grade}</h3>
+      <h3 className={`text-xl font-bold ${headingColor} mb-2`}>AISI {grade.grade}</h3>
       <p className="text-slate-600 text-sm mb-4">{grade.description}</p>
 
       <div className="mb-3">
-        <h4 className="text-xs font-semibold text-slate-500 uppercase mb-1">Key Properties</h4>
+        <h4 className={`text-xs font-semibold ${mutedColor} uppercase mb-1`}>Key Properties</h4>
         <ul className="text-sm text-slate-600 space-y-0.5">
           {grade.properties.map((prop) => (
             <li key={prop} className="flex items-center">
-              <span className="w-1 h-1 bg-teal-500 rounded-full mr-2"></span>
+              <span className={`w-1 h-1 ${bulletColor} rounded-full mr-2`}></span>
               {prop}
             </li>
           ))}
@@ -558,11 +579,11 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
       </div>
 
       <div>
-        <h4 className="text-xs font-semibold text-slate-500 uppercase mb-1">Applications</h4>
+        <h4 className={`text-xs font-semibold ${mutedColor} uppercase mb-1`}>Applications</h4>
         <ul className="text-sm text-slate-600 space-y-0.5">
           {grade.applications.map((app) => (
             <li key={app} className="flex items-center">
-              <span className="w-1 h-1 bg-teal-500 rounded-full mr-2"></span>
+              <span className={`w-1 h-1 ${bulletColor} rounded-full mr-2`}></span>
               {app}
             </li>
           ))}
