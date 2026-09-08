@@ -15,24 +15,6 @@ const gradeBadgeColors: Record<string, string> = {
   '316L': 'bg-cyan-500',
 };
 
-const gradeTextColors: Record<string, string> = {
-  '304': 'text-blue-700',
-  '316': 'text-teal-700',
-  '316L': 'text-cyan-700',
-};
-
-const gradeMutedColors: Record<string, string> = {
-  '304': 'text-blue-600',
-  '316': 'text-teal-600',
-  '316L': 'text-cyan-600',
-};
-
-const gradeBulletColors: Record<string, string> = {
-  '304': 'bg-blue-500',
-  '316': 'bg-teal-500',
-  '316L': 'bg-cyan-500',
-};
-
 const gradeColorMap: Record<string, string> = {
   '304': '#3B82F8',
   '316': '#0D9488',
@@ -310,38 +292,35 @@ export default function StainlessSteelFlanges() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">Technical Specifications</h2>
 
-          <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mb-8">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm min-w-[600px]">
-                <caption className="sr-only">Flange technical specifications by standard</caption>
-                <thead className="bg-slate-100">
-                  <tr>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Standard</th>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900">Size Range</th>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Pressure Rating</th>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Thickness</th>
-                    <th scope="col" className="px-4 sm:px-6 py-3 text-left font-semibold text-slate-900 whitespace-nowrap">Material Grades</th>
-                  </tr>
-                </thead>
+          <div className="bg-white rounded-lg border border-slate-200 shadow-sm mb-8">
+            <table className="w-full text-xs sm:text-sm table-auto">
+              <caption className="sr-only">Flange technical specifications by standard</caption>
+              <thead className="bg-slate-100">
+                <tr>
+                  <th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-left font-semibold text-slate-900">Standard</th>
+                  <th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-left font-semibold text-slate-900">Size Range</th>
+                  <th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-left font-semibold text-slate-900">Pressure Rating</th>
+                  <th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-left font-semibold text-slate-900">Thickness</th>
+                  <th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-left font-semibold text-slate-900">Material Grades</th>
+                </tr>
+              </thead>
               <tbody className="divide-y divide-slate-200">
                 {flangeSpecifications.map((spec, idx) => (
                   <tr key={idx}>
-                    <td className="px-4 sm:px-6 py-3 text-slate-800 whitespace-nowrap">{spec.standard}</td>
-                    <td className="px-4 sm:px-6 py-3 text-slate-600">{spec.sizeRange}</td>
-                    <td className="px-4 sm:px-6 py-3 text-slate-600 whitespace-nowrap">{spec.pressureRating}</td>
-                    <td className="px-4 sm:px-6 py-3 text-slate-600 whitespace-nowrap">{spec.thickness}</td>
-                    <td className="px-4 sm:px-6 py-3 text-slate-600">{spec.material}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 text-slate-800 break-words">{spec.standard}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 text-slate-600 break-all">{spec.sizeRange}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 text-slate-600 break-all">{spec.pressureRating}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 text-slate-600 break-all">{spec.thickness}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 text-slate-600">{spec.material}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-md border border-slate-200">
-          <h3 className="font-semibold text-slate-900 mb-3">Chemical Composition</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm min-w-[400px]">
+          <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md border border-slate-200">
+            <h3 className="font-semibold text-slate-900 mb-3">Chemical Composition</h3>
+            <table className="w-full text-xs sm:text-sm table-auto">
               <caption className="sr-only">Chemical composition of flange grades 304, 316, and 316L</caption>
               <thead>
                 <tr className="border-b border-slate-200">
@@ -380,8 +359,7 @@ export default function StainlessSteelFlanges() {
             </table>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* ===== Certifications ===== */}
       <section id="certs" className="py-12 sm:py-16 bg-slate-100">
@@ -543,19 +521,10 @@ export default function StainlessSteelFlanges() {
 
 function GradeCard({ grade }: { grade: FlangeGrade }) {
   const badgeColor = gradeBadgeColors[grade.grade] || 'bg-slate-500';
-  const headingColor = gradeTextColors[grade.grade] || 'text-slate-900';
-  const mutedColor = gradeMutedColors[grade.grade] || 'text-slate-500';
-  const bulletColor = gradeBulletColors[grade.grade] || 'bg-teal-500';
 
   return (
     <div
-      className={`bg-gradient-to-br ${
-        {
-          '304': 'from-blue-500/20 to-blue-600/20 border-blue-500/30',
-          '316': 'from-teal-500/20 to-teal-600/20 border-teal-500/30',
-          '316L': 'from-cyan-500/20 to-cyan-600/20 border-cyan-500/30',
-        }[grade.grade] || 'from-slate-500/20 to-slate-600/20 border-slate-500/30'
-      } border rounded-xl p-6`}
+      className={`bg-slate-900 border border-slate-700 rounded-xl p-6`}
     >
       <div className="flex items-center gap-3 mb-3">
         <div className="w-10 h-10">
@@ -565,15 +534,15 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
           Grade {grade.grade}
         </span>
       </div>
-      <h3 className={`text-xl font-bold ${headingColor} mb-2`}>AISI {grade.grade}</h3>
-      <p className={`text-sm mb-4 ${mutedColor}`}>{grade.description}</p>
+      <h3 className={`text-xl font-bold text-white mb-2`}>AISI {grade.grade}</h3>
+      <p className="text-slate-300 text-sm mb-4">{grade.description}</p>
 
       <div className="mb-3">
-        <h4 className={`text-xs font-semibold ${mutedColor} uppercase mb-1`}>Key Properties</h4>
-        <ul className={`text-sm ${mutedColor} space-y-0.5`}>
+        <h4 className="text-xs font-semibold text-slate-400 uppercase mb-1">Key Properties</h4>
+        <ul className="text-sm text-slate-300 space-y-0.5">
           {grade.properties.map((prop) => (
             <li key={prop} className="flex items-center">
-              <span className={`w-1 h-1 ${bulletColor} rounded-full mr-2`}></span>
+              <span className={`w-1 h-1 ${badgeColor} rounded-full mr-2`}></span>
               {prop}
             </li>
           ))}
@@ -581,11 +550,11 @@ function GradeCard({ grade }: { grade: FlangeGrade }) {
       </div>
 
       <div>
-        <h4 className={`text-xs font-semibold ${mutedColor} uppercase mb-1`}>Applications</h4>
-        <ul className={`text-sm ${mutedColor} space-y-0.5`}>
+        <h4 className="text-xs font-semibold text-slate-400 uppercase mb-1">Applications</h4>
+        <ul className="text-sm text-slate-300 space-y-0.5">
           {grade.applications.map((app) => (
             <li key={app} className="flex items-center">
-              <span className={`w-1 h-1 ${bulletColor} rounded-full mr-2`}></span>
+              <span className={`w-1 h-1 ${badgeColor} rounded-full mr-2`}></span>
               {app}
             </li>
           ))}
